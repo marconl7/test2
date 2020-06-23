@@ -1,0 +1,68 @@
+.carousel,
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item,
+.view,
+body,
+html {
+  height: 100%;
+}
+.navbar {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.page-footer,
+.top-nav-collapse {
+  background-color: #1c2331;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #1c2331;
+  }
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+.explain {
+    font-size: 2.6rem;
+    font-weight: 400;
+}
+
+.explain2 {
+    font-size:1.3rem;
+    font-weight: 200;
+}
+
+.weather {
+    padding-left: 10%;
+}
+
+.sol-today {
+   
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.date-utc {
+  font-size: 1.7rem;
+}
+
+
+
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.card {
+  width: 65%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+}
+
+.info {
+  font-size: 1.7rem;
+  font-weight: 200;
+}

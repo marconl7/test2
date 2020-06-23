@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mars Weather</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css"  rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <strong>Mars Weather</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse pl-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view">
+          <video class="video-intro" autoplay loop muted>
+            <source src="mars1.mp4" type="video/mp4">
+          </video>
+          <div class="weather mask rgba-black-light d-flex justify-content-left align-items-center">
+            <div class="white-text mx-5 wow fadeIn">
+              <div>
+                <h1 class="explain mb-4">
+                  <strong>Lastest Weather <br> at Elysium Planitia</strong>
+                </h1>
+                <p class="explain2 mb-4">
+                  Insight is taking daily weather measurements (temperature,<br> wind, pressure) on the surface of Mars
+                  at
+                  Elysium
+                  Planitia, a flat,<br> smooth plain near Mars’ equator.
+                </p>
+              </div>
+              <div class="card pt-3 ml-5 mb-5">
+                <div class="card-body">
+                  <p class="sol-today card-title">
+                    <strong>Sol </strong>
+                  </p>
+                  <div class="row info">
+                    <div class="col high">High: </div>
+                    <div class="w-100"></div>
+                    <div class="col low">Low: </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Mask & flexbox options-->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <main class="container main">
+      <div>
+        <h1 class="title pt-4">Last 7 days</h1>
+      </div>
+      <section>
+        <div class="chart-tp" id="curve_chart"></div>
+      </section>
+
+    </main>
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mt-4">
+      <div class="footer-copyright py-3">
+        © 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
+
+    <script>
+      $.ajax({
+        method: "GET",
+        url: "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0",
+
+      }).done(function (msg) {
+        console.log(msg.sol_keys[6]);
+        console.log(msg[msg.sol_keys[0]]);
+        console.log(msg)
+        $(".sol-today").append("<strong>" + msg.sol_keys[6] + "</strong>" + "\n");
+        $(".high").append(msg[msg.sol_keys[6]].AT.mx + "°" );
+        $(".low").append(msg[msg.sol_keys[6]].AT.mn + "°" );
+      });
+    </script>
+
+</body>
+<!--
+Copyright (c) 2019 MDBootstrap.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+</html>
